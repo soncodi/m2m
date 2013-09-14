@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "express": "~3.4.0",
-    "socket.io": "~0.9.16"
+    "socket.io": "~0.9.16",
+    "node-rest-client": "~0.7.0"
   }
 }
