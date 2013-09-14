@@ -4,7 +4,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 var port = 8080;
 
-app.use(express.static(__dirname + '/static'));
+app.use(express.static(__dirname + '/www'));
 
 app.get('/api', function(req, res, next) {
   return res.json({
@@ -13,7 +13,7 @@ app.get('/api', function(req, res, next) {
 });
 
 app.get('*', function(req, res) {
-  return res.sendfile(__dirname + '/static/index.html');
+  return res.sendfile(__dirname + '/www/index.html');
 });
 
 io.sockets.on('connection', function(socket) {

@@ -60,7 +60,7 @@ $(function() {
           for (var i = -19; i <= 0; i++) {
             data.push({
               x: time + i * 1000,
-              y: Math.random()
+              y: 0
             });
           }
 
@@ -86,6 +86,11 @@ $(function() {
       dataSeries.addPoint([x, y], true, true);
     });
 
+    // function onDeviceReady() {
+    //   console.log('ready');
+    // }
+
+    // document.addEventListener('deviceready', onDeviceReady, false);
   });
 
 });
