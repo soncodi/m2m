@@ -4,25 +4,18 @@
   <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="/style.css">
 
+  <script type="text/javascript" src="/vendor/jquery/jquery.js"></script>
   <script type="text/javascript" src="/vendor/highcharts/highcharts.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/script.js"></script>
 </head>
 <body>
-<script>
-  var socket = io.connect();
+  <div class="container">
+    <h1>nameless app</h1>
 
-  socket.emit('ping', {
-    ping: new Date()
-  });
-
-  socket.on('pong', function(data) {
-    console.log(data);
-  });
-
-  socket.on('push', function () {
-    console.log('push', new Date());
-  })
-</script>
-  up
+    <div class="row">
+      <div id="container" class="col-md-8"></div>
+    </div>
+  </div>
 </body>
 </html>

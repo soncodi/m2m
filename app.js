@@ -25,15 +25,11 @@ io.sockets.on('connection', function(socket) {
     });
   });
 
-  function push() {
+  setInterval(function push() {
     socket.emit('push', {
       push: new Date()
     });
-
-    setTimeout(push, 2000);
-  }
-
-  push();
+  }, 1000);
 });
 
 server.listen(port, function() {
