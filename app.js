@@ -24,6 +24,16 @@ io.sockets.on('connection', function(socket) {
       pong: new Date()
     });
   });
+
+  function push() {
+    socket.emit('push', {
+      push: new Date()
+    });
+
+    setTimeout(push, 2000);
+  }
+
+  push();
 });
 
 server.listen(port, function() {

@@ -18,6 +18,10 @@
   socket.on('pong', function(data) {
     console.log(data);
   });
+
+  socket.on('push', function () {
+    console.log('push', new Date());
+  })
 </script>
   up
 </body>
