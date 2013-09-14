@@ -80,7 +80,7 @@ $(function() {
 
   socket.on('push', function(data) {
     var x = (new Date()).getTime();
-    var y = parseInt(data.push, 10);
+    var y = parseFloat(data.push);
 
     dataSeries.addPoint([x, y], true, true);
   });
