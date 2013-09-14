@@ -78,17 +78,10 @@ $(function() {
     console.log(data);
   });
 
-  socket.on('push', function() {
+  socket.on('push', function(data) {
     var x = (new Date()).getTime();
-    var y = Math.random();
+    var y = parseInt(data.push, 10);
 
     dataSeries.addPoint([x, y], true, true);
   });
-
-  // function onDeviceReady() {
-  //   console.log('ready');
-  // }
-
-  // document.addEventListener('deviceready', onDeviceReady, false);
-
 });
