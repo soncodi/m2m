@@ -1,0 +1,14 @@
+
+
+temp and humidity controller
+  terrarium
+  monitors and controls fan
+    temp
+    fan
+    humidity
+    light
+    noise
+  record values, show on web monitor
+
+
+
