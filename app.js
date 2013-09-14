@@ -6,6 +6,12 @@ var port = 8080;
 
 app.use(express.static(__dirname + '/static'));
 
+app.get('/api', function(req, res, next) {
+  return res.json({
+    up: new Date()
+  });
+});
+
 app.get('*', function(req, res) {
   return res.sendfile(__dirname + '/static/index.html');
 });
@@ -17,12 +23,6 @@ io.sockets.on('connection', function(socket) {
     socket.emit('pong', {
       pong: new Date()
     });
-  });
-});
-
-app.get('/api', function(req, res, next) {
-  return res.json({
-    up: new Date()
   });
 });
 

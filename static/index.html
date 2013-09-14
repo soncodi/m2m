@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="text/javascript" src="/vendor/highcharts.js"></script>
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/style.css">
+
+  <script type="text/javascript" src="/vendor/highcharts/highcharts.js"></script>
   <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
@@ -12,7 +15,7 @@
     ping: new Date()
   });
 
-  socket.on('pong', function (data) {
+  socket.on('pong', function(data) {
     console.log(data);
   });
 </script>
