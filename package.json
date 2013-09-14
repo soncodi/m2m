@@ -13,6 +13,7 @@
     "url": "https://github.com/ruff/m2m/issues"
   },
   "dependencies": {
-    "express": "~3.4.0"
+    "express": "~3.4.0",
+    "socket.io": "~0.9.16"
   }
 }
