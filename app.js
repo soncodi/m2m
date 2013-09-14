@@ -15,6 +15,16 @@ var client = new Client({
   password: pass
 });
 
+var temp = 0;
+
+setInterval(function() {
+  client.get(root +
+    '/account/domain/69bd3ed2f51a8d7bd68180eda5d0c2c8' +
+    '/stuff/arduino/thing/device01/present', function(data, response) {
+    temp = data.attributes.Temperature;
+  });
+}, 1000);
+
 app.use(express.static(__dirname + '/www'));
 
 app.get('/api', function(req, res, next) {
@@ -37,21 +47,11 @@ io.sockets.on('connection', function(socket) {
   });
 
   setInterval(function() {
-    pushData(socket);
-  }, 1000);
-});
-
-function pushData(socket) {
-  client.get(root +
-    '/account/domain/69bd3ed2f51a8d7bd68180eda5d0c2c8' +
-    '/stuff/arduino/thing/device01/present', function(data, response) {
     socket.emit('push', {
-      push: data.attributes.Temperature
+      push: temp
     });
-
-    console.log(data.attributes.Temperature);
-  });
-}
+  }, 500);
+});
 
 server.listen(port, function() {
   console.log('up on %d', port);
