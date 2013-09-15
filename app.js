@@ -21,7 +21,7 @@ setInterval(function() {
   client.get(root +
     '/account/domain/69bd3ed2f51a8d7bd68180eda5d0c2c8' +
     '/stuff/arduino/thing/device01/present', function(data, response) {
-    temp = data.attributes.Temperature;
+    temp = data.attributes.Temperature || 0;
   });
 }, 1000);
 
