@@ -16,12 +16,16 @@ var client = new Client({
 });
 
 var temp = 0;
+var moisture = 0;
+var light = 0;
 
 setInterval(function() {
   client.get(root +
     '/account/domain/69bd3ed2f51a8d7bd68180eda5d0c2c8' +
     '/stuff/arduino/thing/device01/present', function(data, response) {
     temp = data.attributes.Temperature || 0;
+    moisture = data.attributes.Moisture || 0;
+    light = data.attributes.Light || 0;
   });
 }, 1000);
 
@@ -42,7 +46,9 @@ io.sockets.on('connection', function(socket) {
 
   var pushInterval = setInterval(function() {
     socket.emit('push', {
-      push: temp
+      temp: temp,
+      moisture: moisture,
+      light: light
     });
   }, 2000);
 
