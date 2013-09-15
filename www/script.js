@@ -68,7 +68,8 @@ $(function() {
     }]
   });
 
-  var socket = io.connect();
+  // var socket = io.connect();
+  var socket = io.connect('http://m2m.soncodi.com');
 
   socket.emit('ping', {
     ping: new Date()

@@ -46,11 +46,17 @@ io.sockets.on('connection', function(socket) {
     });
   });
 
-  setInterval(function() {
+  var pushInterval = setInterval(function() {
     socket.emit('push', {
       push: temp
     });
   }, 500);
+
+  socket.on('disconnect', function () {
+    if (pushInterval) {
+      clearInterval(pushInterval);
+    }
+  });
 });
 
 server.listen(port, function() {
