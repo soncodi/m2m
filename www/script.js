@@ -69,7 +69,7 @@ $(function() {
   });
 
   // var socket = io.connect();
-  var socket = io.connect('http://m2m.soncodi.com');
+  var socket = io.connect('http://m2m.soncodi.com:8080');
 
   socket.emit('ping', {
     ping: new Date()
