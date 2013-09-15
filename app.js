@@ -44,7 +44,7 @@ io.sockets.on('connection', function(socket) {
     socket.emit('push', {
       push: temp
     });
-  }, 500);
+  }, 2000);
 
   socket.on('disconnect', function() {
     console.log('client disconnected');
