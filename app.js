@@ -27,12 +27,6 @@ setInterval(function() {
 
 app.use(express.static(__dirname + '/www'));
 
-app.get('/api', function(req, res, next) {
-  return res.json({
-    up: new Date()
-  });
-});
-
 app.get('*', function(req, res) {
   return res.sendfile(__dirname + '/www/index.html');
 });
@@ -52,7 +46,8 @@ io.sockets.on('connection', function(socket) {
     });
   }, 500);
 
-  socket.on('disconnect', function () {
+  socket.on('disconnect', function() {
+    console.log('client disconnected');
     if (pushInterval) {
       clearInterval(pushInterval);
     }
