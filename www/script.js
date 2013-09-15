@@ -9,7 +9,7 @@ $(function() {
 
   var dataSeries;
 
-  $('#container').highcharts({
+  $('#temp').highcharts({
     chart: {
       type: 'spline',
       animation: Highcharts.svg,
