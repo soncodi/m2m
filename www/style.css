@@ -11,7 +11,7 @@ html, body {
 }
 
 body {
-  padding-top: 100px;
+  padding-top: 120px;
   background-image: -ms-linear-gradient(top, #f7fceb 0%, #ebffc8 100%);
   background-image: -moz-linear-gradient(top, #f7fceb 0%, #ebffc8 100%);
   background-image: -o-linear-gradient(top, #f7fceb 0%, #ebffc8 100%);
@@ -53,6 +53,7 @@ body {
 
 .logo {
   padding: 5px;
+  height: 80px;
 }
 
 /* Layout */
@@ -103,5 +104,5 @@ body {
 }
 
 .graph-block .graph {
-  height: 300px;
+  height: 320px;
 }

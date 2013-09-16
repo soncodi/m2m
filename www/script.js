@@ -1,8 +1,22 @@
 /* globals Highcharts, io */
 
 $(function() {
-  function arrsum(a, b) {
+  function arrSum(a, b) {
     return a + b;
+  }
+
+  function genPoints() {
+    var data = [];
+    var time = (new Date()).getTime();
+
+    for (var i = -9; i <= 0; i++) {
+      data.push({
+        x: time + i * 1000,
+        y: 0
+      });
+    }
+
+    return data;
   }
 
   Highcharts.setOptions({
@@ -58,19 +72,7 @@ $(function() {
     exporting: { enabled: false },
     series: [{
       name: 'Temperature',
-      data: (function() {
-        var data = [];
-        var time = (new Date()).getTime();
-
-        for (var i = -9; i <= 0; i++) {
-          data.push({
-            x: time + i * 1000,
-            y: 0
-          });
-        }
-
-        return data;
-      })()
+      data: genPoints()
     }]
   });
 
@@ -117,19 +119,7 @@ $(function() {
     exporting: { enabled: false },
     series: [{
       name: 'Moisture',
-      data: (function() {
-        var data = [];
-        var time = (new Date()).getTime();
-
-        for (var i = -9; i <= 0; i++) {
-          data.push({
-            x: time + i * 1000,
-            y: 0
-          });
-        }
-
-        return data;
-      })()
+      data: genPoints()
     }]
   });
 
@@ -167,19 +157,7 @@ $(function() {
     exporting: { enabled: false },
     series: [{
       name: 'Light',
-      data: (function() {
-        var data = [];
-        var time = (new Date()).getTime();
-
-        for (var i = -9; i <= 0; i++) {
-          data.push({
-            x: time + i * 1000,
-            y: 0
-          });
-        }
-
-        return data;
-      })()
+      data: genPoints()
     }]
   });
 
@@ -191,7 +169,7 @@ $(function() {
   });
 
   socket.on('pong', function(data) {
-    console.log(data);
+    // console.log(data);
   });
 
   socket.on('push', function(data) {
@@ -205,17 +183,17 @@ $(function() {
     moisture.addPoint([x, m[m.length - 1]], true, true);
     light.addPoint([x, l[l.length - 1]], true, true);
 
-    var tsum = t.reduce(arrsum);
+    var tsum = t.reduce(arrSum);
     var tavg = tsum / t.length;
     var tmax = Math.max.apply(null, t);
     var tmin = Math.min.apply(null, t);
 
-    var msum = m.reduce(arrsum);
+    var msum = m.reduce(arrSum);
     var mavg = msum / m.length;
     var mmax = Math.max.apply(null, m);
     var mmin = Math.min.apply(null, m);
 
-    var lsum = l.reduce(arrsum);
+    var lsum = l.reduce(arrSum);
     var lavg = lsum / l.length;
     var lmax = Math.max.apply(null, l);
     var lmin = Math.min.apply(null, l);
