@@ -92,8 +92,8 @@ body {
   left: -10px;
 }
 
-.graph-block .stack .high,
-.graph-block .stack .low {
+.graph-block .stack .max,
+.graph-block .stack .min {
   font-size: 25px;
 }
 

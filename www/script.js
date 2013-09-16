@@ -1,6 +1,10 @@
 /* globals Highcharts, io */
 
 $(function() {
+  function arrsum(a, b) {
+    return a + b;
+  }
+
   Highcharts.setOptions({
     global: {
       useUTC: false
@@ -193,8 +197,39 @@ $(function() {
   socket.on('push', function(data) {
     var x = (new Date()).getTime();
 
-    temp.addPoint([x, parseFloat(data.temp)], true, true);
-    moisture.addPoint([x, parseFloat(data.moisture)], true, true);
-    light.addPoint([x, parseFloat(data.light)], true, true);
+    var t = data.temp;
+    var m = data.moisture;
+    var l = data.light;
+
+    temp.addPoint([x, t[t.length - 1]], true, true);
+    moisture.addPoint([x, m[m.length - 1]], true, true);
+    light.addPoint([x, l[l.length - 1]], true, true);
+
+    var tsum = t.reduce(arrsum);
+    var tavg = tsum / t.length;
+    var tmax = Math.max.apply(null, t);
+    var tmin = Math.min.apply(null, t);
+
+    var msum = m.reduce(arrsum);
+    var mavg = msum / m.length;
+    var mmax = Math.max.apply(null, m);
+    var mmin = Math.min.apply(null, m);
+
+    var lsum = l.reduce(arrsum);
+    var lavg = lsum / l.length;
+    var lmax = Math.max.apply(null, l);
+    var lmin = Math.min.apply(null, l);
+
+    $('.temp .avg .val').text(tavg.toFixed(0));
+    $('.temp .max .val').text(tmax.toFixed(0));
+    $('.temp .min .val').text(tmin.toFixed(0));
+
+    $('.moisture .avg .val').text(mavg.toFixed(0));
+    $('.moisture .max .val').text(mmax.toFixed(0));
+    $('.moisture .min .val').text(mmin.toFixed(0));
+
+    $('.light .avg .val').text(lavg.toFixed(0));
+    $('.light .max .val').text(lmax.toFixed(0));
+    $('.light .min .val').text(lmin.toFixed(0));
   });
 });

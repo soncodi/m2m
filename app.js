@@ -15,9 +15,9 @@ var client = new Client({
   password: pass
 });
 
-var temp = 0;
-var moisture = 0;
-var light = 0;
+var temp = [];
+var moisture = [];
+var light = [];
 
 setInterval(function() {
   client.get(root +
@@ -27,9 +27,19 @@ setInterval(function() {
       return;
     }
 
-    temp = data.attributes.Temperature || 0;
-    moisture = data.attributes.Moisture || 0;
-    light = data.attributes.Light || 0;
+    var t = parseFloat(data.attributes.Temperature) || 0;
+    var m = parseFloat(data.attributes.Moisture) || 0;
+    var l = parseFloat(data.attributes.Light) || 0;
+
+    if (temp.length > 9) {
+      temp.pop();
+      moisture.pop();
+      light.pop();
+    }
+
+    temp.push(t);
+    moisture.push(m);
+    light.push(l);
   });
 }, 1000);
 
