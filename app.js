@@ -5,7 +5,7 @@ var io = require('socket.io').listen(server);
 var port = 8080;
 
 var root = 'http://att-api.m2m.io/2';
-var user = 'team7@att.com';
+var user = 'asoncodi@gmail.com';
 var pass = '';
 
 var Client = require('node-rest-client').Client;
@@ -21,8 +21,8 @@ var light = 0;
 
 setInterval(function() {
   client.get(root +
-    '/account/domain/c114bad6973b3248af9f6adb5b09dd51' +
-    '/stuff/arduino/thing/device01/present', function(data, response) {
+    '/account/domain/1ce215c3f9414890642cbc67595780a7' +
+    '/stuff/arduino/thing/device02/present', function(data, response) {
     if (!data.attributes) {
       return;
     }
