@@ -21,6 +21,11 @@ int tempSensorPin = 0;
 int lightSensorPin = 1;
 int moistureSensorPin = 4;
 
+float Res0=20.0;              // Resistance in the circuit of sensor 0 (KOhms)
+// depending of the Resistance used, you could measure better at dark or at bright conditions.
+// you could use a double circuit (using other LDR connected to analog pin 1) to have fun testing the sensors.
+// Change the value of Res0 depending of what you use in the circuit
+
 
 void cmdCallBack(char *topic, uint8_t* payload, unsigned int len);
 
@@ -106,15 +111,15 @@ void getSensorValue()
   // light sensor
   val = analogRead(lightSensorPin); 
   
-  dat = (float)(1023-val)*10/val;
-  dig1 = int(dat);
-  if(val >= 0)
-    frac = (dat - int(dat)) * 100;
-  else
-    frac = (int(dat)- dat ) * 100;
+  dat=val*0.0048828125;                        // calculate the voltage
+  int lux0=500/(Res0*((5-dat)/dat));           // calculate the Lux
+  
+  Serial.print("Luminosity: ");
+  Serial.print(lux0);
+  Serial.println(" Lux");
     
   int lightsOn = 0;
-  if (dig1  > 15)
+  if (lux0 < 50)
   {
     digitalWrite(12, HIGH);
     delay(500);
@@ -128,11 +133,6 @@ void getSensorValue()
     lightsOn = 0;
     Serial.println("Lights off");
   }
-    
-  char light[10];
-  sprintf(light, "%d.%d", dig1, frac);
-  Serial.print("Light sensor resistance: ");
-  Serial.println(light);
   
   // moisture sensor
   val = analogRead(moistureSensorPin);
@@ -144,7 +144,7 @@ void getSensorValue()
   
   acc.startMessage();
   acc.addKVToMessage("Temperature", temp);
-  acc.addKVToMessage("Light", light);
+  acc.addKVToMessage("Light", lux0);
   acc.addKVToMessage("Moisture", moisture);
   acc.addKVToMessage("FanStatus", fanOn);
   acc.addKVToMessage("LightStatus", lightsOn);
