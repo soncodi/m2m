@@ -6,9 +6,9 @@ PROGMEM const prog_uchar  M2MIO_USERNAME[]    = "asoncodi@gmail.com";
 PROGMEM const prog_uchar  M2MIO_PASSWORD[]    = "3dbcf1dd4d06937acec56583b6f8f1b7";    // MD5 key of password
 PROGMEM const prog_uchar  M2MIO_DOMAIN[]      =  "1ce215c3f9414890642cbc67595780a7";
 PROGMEM const prog_uchar  M2MIO_DEVICE_TYPE[] =	 "arduino";
-PROGMEM const prog_uchar  M2MIO_DEVICE_ID[]   =  "device01";
+PROGMEM const prog_uchar  M2MIO_DEVICE_ID[]   =  "device02";
 
-PROGMEM const prog_uchar M2MIO_CLIENT_ID[]    =  "arduino/device01";
+PROGMEM const prog_uchar M2MIO_CLIENT_ID[]    =  "arduino/device02";
 
 #define REPORTING_INTERVAL_MS  3000
 
