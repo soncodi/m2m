@@ -814,9 +814,9 @@ void power_on(){
     Serial.println(F("Powering on modem."));
     
     // checks if the module is started
-    answer = sendATcommand("AT", "OK", 2000);
-    if (answer == 0)
-    {
+    //answer = sendATcommand("AT", "OK", 2000);
+    //if (answer == 0)
+    //{
         // power on pulse
         digitalWrite(onModulePin,HIGH);
         delay(3000);
@@ -826,7 +826,7 @@ void power_on(){
         while(answer == 0){     // Send AT every two seconds and wait for the answer
             answer = sendATcommand("AT", "OK", 2000);    
         }
-    }
+    //}
     
 }
 
