@@ -1,9 +1,17 @@
+/* Global */
+
 * {
   margin: 0;
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
+  padding-top: 100px;
   background-image: -ms-linear-gradient(top, #f7fceb 0%, #ebffc8 100%);
   background-image: -moz-linear-gradient(top, #f7fceb 0%, #ebffc8 100%);
   background-image: -o-linear-gradient(top, #f7fceb 0%, #ebffc8 100%);
@@ -11,14 +19,84 @@ body {
   background-image: -webkit-linear-gradient(top, #f7fceb 0%, #ebffc8 100%);
   background-image: linear-gradient(to bottom, #f7fceb 0%, #ebffc8 100%);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-attachment: fixed;
 }
 
-#container {
-  height: 100%;
+/* Widget */
+
+.navbar {
+  height: 80px;
 }
 
-#logo {
-  padding-bottom: 30px;
-  margin: 0 auto;
+.navbar-collapse.collapsing,
+.navbar-collapse.in {
+  background-color: #f8f8f8;
+}
+
+.nav {
+  padding: 15px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav li.active a {
+  background-color: #009245 !important;
+  color: #fff !important;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.well {
+  padding: 5px;
+}
+
+.logo {
+  padding: 5px;
+}
+
+/* Layout */
+
+.graph-block {
+}
+
+.graph-block .cat {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.graph-block .stats {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.graph-block .stats > * {
+  display: inline-block;
+}
+
+.graph-block .avg {
+  height: 160px;
+  width: 160px;
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.graph-block .val.deg:after {
+  content: '\00b0';
+}
+
+.graph-block .stack {
+  position: relative;
+  left: -10px;
+}
+
+.graph-block .stack .high,
+.graph-block .stack .low {
+  font-size: 25px;
+}
+
+.graph-block .graph {
+  height: 280px;
 }

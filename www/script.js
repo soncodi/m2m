@@ -12,13 +12,16 @@ $(function() {
   var light;
 
   $('#temp').highcharts({
+    credits: {
+      enabled: false
+    },
     chart: {
-      type: 'spline',
+      type: 'area',
       animation: Highcharts.svg,
       marginRight: 10,
       events: { load: function() { temp = this.series[0]; } }
     },
-    title: { text: 'Temperature'},
+    title: { text: null },
     xAxis: { type: 'datetime', tickPixelInterval: 150 },
     yAxis: {
       title: { text: 'Value' },
@@ -27,8 +30,24 @@ $(function() {
     tooltip: {
       formatter: function() {
         return '<b>'+ this.series.name +'</b><br/>'+
-          Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
-          Highcharts.numberFormat(this.y, 2);
+          Highcharts.dateFormat('%H:%M:%S', this.x) +'<br/>'+
+          Highcharts.numberFormat(this.y, 2) + '°';
+      }
+    },
+    plotOptions: {
+      area: {
+        fillColor: {
+          linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+          stops: [
+            [0, Highcharts.Color(Highcharts.getOptions().colors[3]).setOpacity(0.6).get('rgba')],
+            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.2).get('rgba')]
+          ]
+        },
+        lineWidth: 1,
+        marker: { enabled: false },
+        shadow: false,
+        states: { hover: { lineWidth: 1 } },
+        threshold: null
       }
     },
     legend: { enabled: false },
@@ -39,7 +58,7 @@ $(function() {
         var data = [];
         var time = (new Date()).getTime();
 
-        for (var i = -19; i <= 0; i++) {
+        for (var i = -9; i <= 0; i++) {
           data.push({
             x: time + i * 1000,
             y: 0
@@ -52,13 +71,16 @@ $(function() {
   });
 
   $('#moisture').highcharts({
+    credits: {
+      enabled: false
+    },
     chart: {
-      type: 'spline',
+      type: 'area',
       animation: Highcharts.svg,
       marginRight: 10,
       events: { load: function() { moisture = this.series[0]; } }
     },
-    title: { text: 'Moisture'},
+    title: { text: null },
     xAxis: { type: 'datetime', tickPixelInterval: 150 },
     yAxis: {
       title: { text: 'Value' },
@@ -67,8 +89,24 @@ $(function() {
     tooltip: {
       formatter: function() {
         return '<b>'+ this.series.name +'</b><br/>'+
-          Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
+          Highcharts.dateFormat('%H:%M:%S', this.x) +'<br/>'+
           Highcharts.numberFormat(this.y, 2);
+      }
+    },
+    plotOptions: {
+      area: {
+        fillColor: {
+          linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+          stops: [
+            [0, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')],
+            [1, Highcharts.getOptions().colors[0]]
+          ]
+        },
+        lineWidth: 1,
+        marker: { enabled: false },
+        shadow: false,
+        states: { hover: { lineWidth: 1 } },
+        threshold: null
       }
     },
     legend: { enabled: false },
@@ -79,7 +117,7 @@ $(function() {
         var data = [];
         var time = (new Date()).getTime();
 
-        for (var i = -19; i <= 0; i++) {
+        for (var i = -9; i <= 0; i++) {
           data.push({
             x: time + i * 1000,
             y: 0
@@ -92,13 +130,16 @@ $(function() {
   });
 
   $('#light').highcharts({
+    credits: {
+      enabled: false
+    },
     chart: {
       type: 'spline',
       animation: Highcharts.svg,
       marginRight: 10,
       events: { load: function() { light = this.series[0]; } }
     },
-    title: { text: 'Light'},
+    title: { text: null },
     xAxis: { type: 'datetime', tickPixelInterval: 150 },
     yAxis: {
       title: { text: 'Value' },
@@ -107,8 +148,15 @@ $(function() {
     tooltip: {
       formatter: function() {
         return '<b>'+ this.series.name +'</b><br/>'+
-          Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
+          Highcharts.dateFormat('%H:%M:%S', this.x) +'<br/>'+
           Highcharts.numberFormat(this.y, 2);
+      }
+    },
+    plotOptions: {
+      spline: {
+        lineWidth: 4,
+        states: { hover: { lineWidth: 5 } },
+        marker: { enabled: false }
       }
     },
     legend: { enabled: false },
@@ -119,7 +167,7 @@ $(function() {
         var data = [];
         var time = (new Date()).getTime();
 
-        for (var i = -19; i <= 0; i++) {
+        for (var i = -9; i <= 0; i++) {
           data.push({
             x: time + i * 1000,
             y: 0

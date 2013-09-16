@@ -15,43 +15,75 @@
   <script type="text/javascript" src="phonegap.js"></script>
   <script type="text/javascript" src="script.js"></script>
 </head>
-<body style="padding: 30px">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12" id="logo">
-        <img src="img/logo-ecosense_word.png" />
-      </div>
-    </div>
-    <div class="navbar navbar-default">
+<body>
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">MENU</a>
+        <img src="img/logo-ecosense_word.png" class="logo" />
       </div>
       <div class="navbar-collapse collapse">
-        <p class="navbar-text pull-right">Signed in as <a href="">Username</a></p>
+        <ul class="nav navbar-nav pull-right">
+          <li class="active"><a href="#">Demo</a></li>
+          <li><a href="#">Purchase</a></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row graph-block">
+      <div class="col-sm-3">
+        <div class="row cat">Temperature (&deg;F)</div>
+        <div class="row stats">
+          <div class="avg"><span class="val deg">80</span></div>
+          <div class="stack">
+            <div class="high"><span class="val deg">87</span></div>
+            <div class="low"><span class="val deg">72</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div id="temp" class="well well-large graph"></div>
+        <hr />
       </div>
     </div>
 
-    <hr />
+    <div class="row graph-block">
+      <div class="col-sm-3">
+        <div class="row cat">Moisture (%)</div>
+        <div class="row stats">
+          <div class="avg"><span class="val">80</span></div>
+          <div class="stack">
+            <div class="high"><span class="val">87</span></div>
+            <div class="low"><span class="val">72</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div id="moisture" class="well well-large graph"></div>
+        <hr />
+      </div>
+    </div>
 
-    <div class="row">
-      <div class="col-sm-12">
-        <ul class="nav nav-tabs"><li class="active"><a href="">Temperature</a></li></ul>
-        <div id="temp" class="well well-large"></div>
-        <hr />
+    <div class="row graph-block">
+      <div class="col-sm-3">
+        <div class="row cat">Light (lux)</div>
+        <div class="row stats">
+          <div class="avg"><span class="val">80</span></div>
+          <div class="stack">
+            <div class="high"><span class="val">87</span></div>
+            <div class="low"><span class="val">72</span></div>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-12">
-        <ul class="nav nav-tabs"><li class="active"><a href="">Moisture</a></li></ul>
-        <div id="moisture" class="well well-large"></div>
-        <hr />
-      </div>
-      <div class="col-sm-12">
-        <ul class="nav nav-tabs"><li class="active"><a href="">Light</a></li></ul>
-        <div id="light" class="well well-large"></div>
+      <div class="col-sm-9">
+        <div id="light" class="well well-large graph"></div>
         <hr />
       </div>
     </div>
