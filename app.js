@@ -31,8 +31,8 @@ setInterval(function() {
       return;
     }
 
-    fanStatus = !!attrs.FanStatus;
-    lightStatus = !!attrs.LightStatus;
+    fanStatus = (attrs.FanStatus === '1');
+    lightStatus = (attrs.LightStatus === '1');
 
     var t = parseFloat(attrs.Temperature) || 0;
     var m = parseFloat(attrs.Moisture) || 0;
@@ -58,8 +58,6 @@ app.get('*', function(req, res) {
 
 io.sockets.on('connection', function(socket) {
   socket.on('ping', function(data) {
-    console.log(data);
-
     socket.emit('pong', {
       pong: new Date()
     });
@@ -77,6 +75,7 @@ io.sockets.on('connection', function(socket) {
 
   socket.on('disconnect', function() {
     console.log('client disconnected');
+
     if (pushInterval) {
       clearInterval(pushInterval);
     }

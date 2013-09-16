@@ -212,5 +212,8 @@ $(function() {
 
     $('.temp .status .val').text(data.fanStatus ? 'ON' : 'OFF');
     $('.light .status .val').text(data.lightStatus ? 'ON' : 'OFF');
+
+    $('.temp .status').toggleClass('dim', !data.fanStatus);
+    $('.light .status').toggleClass('dim', !data.lightStatus);
   });
 });

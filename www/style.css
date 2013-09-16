@@ -99,6 +99,10 @@ body {
   font-size: 25px;
 }
 
+.graph-block .status.dim {
+  opacity: 0.5;
+}
+
 .graph-block .status .pic {
   height: 50px;
 }
