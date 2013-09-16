@@ -1,0 +1,173 @@
+[33mcommit e544292d3ce60eb2545bc01ed320e418f4017a19[m
+Author: Jennifer Huang <jenhuang1120@hotmail.com>
+Date:   Mon Sep 16 01:09:58 2013 -0500
+
+    Redo icon design.
+
+[33mcommit 9133711e3493dc08cc2af7dbbdcbb6d13eda9a06[m
+Author: Martin Tran <bigmarty@gmail.com>
+Date:   Sun Sep 15 21:39:19 2013 -0500
+
+    deleted zipfile
+
+[33mcommit 3a614bdaea29980f42836f525990f1a40cc9a0c3[m
+Author: Martin Tran <bigmarty@gmail.com>
+Date:   Sun Sep 15 21:36:13 2013 -0500
+
+    Adding arduino files
+
+[33mcommit 559c33835bb60bcc5b0ebf86a973d415115c0b4a[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sun Sep 15 14:09:59 2013 -0500
+
+    Add splashscreens.
+
+[33mcommit d9001f6be92d55a661efe75e13912a5edfe2f820[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sun Sep 15 13:43:52 2013 -0500
+
+    Android resource structure.
+
+[33mcommit 09548d6287759d744e27fe04005838237876df72[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sun Sep 15 13:22:35 2013 -0500
+
+    Add moisture and light sensor output.
+
+[33mcommit e329e7363e6f14e74ac6eeed522311a687a0c580[m
+Author: Jennifer Huang <jenhuang1120@hotmail.com>
+Date:   Sun Sep 15 13:08:30 2013 -0500
+
+    Add splash screens.
+
+[33mcommit 6a787c6c66df04391e2679eb1cc90372f7e521ac[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sun Sep 15 12:29:00 2013 -0500
+
+    Add index styles.
+
+[33mcommit 9dd4e52e38d16028807daa256a182c3303d2470a[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sun Sep 15 12:02:19 2013 -0500
+
+    Reduce push frequency.
+
+[33mcommit 122e0284dd0140089ab1d67bc39808810f89d75c[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sun Sep 15 11:45:50 2013 -0500
+
+    Export websocket port.
+
+[33mcommit 01f6660953d0434e8ba25c3ec416ea2eaf62c1d5[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sun Sep 15 11:28:51 2013 -0500
+
+    Cast retval.
+
+[33mcommit e627fb8af4f925144e79abcbf710283da2e0f2d5[m
+Author: Jennifer Huang <jenhuang1120@hotmail.com>
+Date:   Sun Sep 15 11:14:32 2013 -0500
+
+    Add logos.
+
+[33mcommit 4517a40bbc11b16a0af95b2c9ec9653c3d56252e[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sun Sep 15 03:24:05 2013 -0500
+
+    Remove API route.
+
+[33mcommit c5cc3994c621249daca877f6afa60ef751b59622[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sun Sep 15 03:20:26 2013 -0500
+
+    Handle disconnects. Update build config.
+
+[33mcommit 82cedc15cec89773c117482797ae8633d54a508a[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 19:02:45 2013 -0500
+
+    Extract socketio library.
+
+[33mcommit fffc5192f5ac9441aada019e9b26bcd897686c86[m
+Author: Martin Tran <bigmarty@gmail.com>
+Date:   Sat Sep 14 18:50:36 2013 -0500
+
+    commit Arduino source
+
+[33mcommit a7360ff2345de4e95b3928705576e2eb0e7d9f37[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 18:37:50 2013 -0500
+
+    Cache API requests through second polling.
+
+[33mcommit 1abb0e5d67b92d0ba3d9faacac468272e16e141a[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 18:31:11 2013 -0500
+
+    More precision.
+
+[33mcommit a2825bc20e41ba31354a5b8271207c103468eeef[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 18:26:11 2013 -0500
+
+    Retrieve temp data from API service.
+
+[33mcommit b25fab0bc170fbe8cae5fa908ff2a401e8a20edf[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 17:17:53 2013 -0500
+
+    Fix paths for phonegap. Add REST client for m2m API.
+
+[33mcommit 41ae58bf83eb20146c6037f95f5e8367a3b6eb38[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 16:23:01 2013 -0500
+
+    Ignore android build files.
+
+[33mcommit ae5bfe4425d8109b60902487ec006c3857e8ed96[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 16:19:11 2013 -0500
+
+    Phonegap skeleton.
+
+[33mcommit b672dddde27e3a38bb9379702f8635a013490f36[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 15:46:29 2013 -0500
+
+    Server-generated data. Add jQuery.
+
+[33mcommit 614a23b16e4b092f573f25768a0cf71aaaf29ba8[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 15:03:43 2013 -0500
+
+    Add server push.
+
+[33mcommit 7f59c6f713a564291eb01697e42c65333b25998a[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 14:52:29 2013 -0500
+
+    Add Bootstrap, Highcharts.
+
+[33mcommit 1bcb0f746e1b2da4840d1a3f8d8257d630ed8374[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 14:47:00 2013 -0500
+
+    Websocket ping/pong.
+
+[33mcommit 8e11c0e5abe459a0232d4e23ff5861b2cbddc9ae[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 14:32:17 2013 -0500
+
+    Static folder.
+
+[33mcommit 0370434ecea29b295466891796118c0d4747d707[m
+Author: Alex Soncodi <asoncodi@gmail.com>
+Date:   Sat Sep 14 14:12:36 2013 -0500
+
+    Initial app.
+
+[33mcommit 23638610157e8be1531094db51d08e33d00ef848[m
+Author: Alex <asoncodi@gmail.com>
+Date:   Sat Sep 14 12:04:50 2013 -0700
+
+    Initial commit
