@@ -231,5 +231,8 @@ $(function() {
     $('.light .avg .val').text(lavg.toFixed(0));
     $('.light .max .val').text(lmax.toFixed(0));
     $('.light .min .val').text(lmin.toFixed(0));
+
+    $('.temp .status .val').text(data.fanStatus ? 'ON' : 'OFF');
+    $('.light .status .val').text(data.lightStatus ? 'ON' : 'OFF');
   });
 });

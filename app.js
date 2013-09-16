@@ -19,17 +19,24 @@ var temp = [];
 var moisture = [];
 var light = [];
 
+var fanStatus = 0;
+var lightStatus = 0;
+
 setInterval(function() {
-  client.get(root +
-    '/account/domain/1ce215c3f9414890642cbc67595780a7' +
-    '/stuff/arduino/thing/device02/present', function(data, response) {
-    if (!data.attributes) {
+  client.get(root + '/account/domain/1ce215c3f9414890642cbc67595780a7' +
+      '/stuff/arduino/thing/device02/present', function(data, response) {
+    var attrs = data.attributes;
+
+    if (!attrs) {
       return;
     }
 
-    var t = parseFloat(data.attributes.Temperature) || 0;
-    var m = parseFloat(data.attributes.Moisture) || 0;
-    var l = parseFloat(data.attributes.Light) || 0;
+    fanStatus = !!attrs.FanStatus;
+    lightStatus = !!attrs.LightStatus;
+
+    var t = parseFloat(attrs.Temperature) || 0;
+    var m = parseFloat(attrs.Moisture) || 0;
+    var l = parseFloat(attrs.Light) || 0;
 
     if (temp.length > 9) {
       temp.pop();
@@ -62,7 +69,9 @@ io.sockets.on('connection', function(socket) {
     socket.emit('push', {
       temp: temp,
       moisture: moisture,
-      light: light
+      light: light,
+      fanStatus: fanStatus,
+      lightStatus: lightStatus
     });
   }, 2000);
 

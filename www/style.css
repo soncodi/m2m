@@ -72,22 +72,19 @@ body {
   white-space: nowrap;
 }
 
-.graph-block .stats > * {
+.graph-block .stats .avg {
   display: inline-block;
-}
-
-.graph-block .avg {
-  height: 160px;
   width: 160px;
   font-size: 80px;
   font-weight: bold;
 }
 
-.graph-block .val.deg:after {
+.graph-block .stats .val.deg:after {
   content: '\00b0';
 }
 
 .graph-block .stack {
+  display: inline-block;
   position: relative;
   left: -10px;
 }
@@ -97,6 +94,14 @@ body {
   font-size: 25px;
 }
 
+.graph-block .status {
+  font-size: 25px;
+}
+
+.graph-block .status .pic {
+  height: 50px;
+}
+
 .graph-block .graph {
-  height: 280px;
+  height: 300px;
 }
