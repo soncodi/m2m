@@ -1,4 +1,4 @@
-m2m
+EcoSense
 ===
 
 AT&amp;T Mobile Hackathon
