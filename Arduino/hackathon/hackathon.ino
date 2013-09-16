@@ -17,20 +17,22 @@ ATT3GModemClient c;
 
 Timer t;
 
-int sensorPin = 0;
-int sensorValue = 0;  // sensor reading
+int tempSensorPin = 0;
+int lightSensorPin = 1;
+int moistureSensorPin = 4;
+
 
 void cmdCallBack(char *topic, uint8_t* payload, unsigned int len);
 
 void setup()
 {
+  pinMode(13, OUTPUT);
+  
   while(!Serial);
   delay(1500);
 
   Serial.begin(9600); // port to communicate to PC
   Serial1.begin(115200); // port that talks to 3G modem
-
-  Serial.println(F("Sensor Loop"));
 
   c = ATT3GModemClient();
   acc = ATTCloudClient(cmdCallBack,c);
@@ -62,12 +64,30 @@ void cmdCallBack(char *topic, uint8_t* payload, unsigned int len)
 
 void getSensorValue()
 {
-  int val;
-  float dat;
-  val = analogRead(sensorPin);
-  dat = (125*val)>>8 ; // Temperature calculation formula
+  Serial.println("getSensorValue");
+  // temp
+  int B=3975;
+  int val = analogRead(tempSensorPin);
+  
+  float resistance=(float)(1023-val)*10000/val; 
+  float dat=1/(log(resistance/10000)/B+1/298.15)-273.15;
   dat = dat * 1.8 + 32;
   
+  if ((int)dat > 75)
+  {
+    digitalWrite(13, HIGH);
+    delay(500);
+    acc.sendKV("Fan", "ON");
+    Serial.println("Fan on");
+  }
+  else
+  {
+    digitalWrite(13, LOW);
+    delay(500);
+    acc.sendKV("Fan", "OFF");
+    Serial.println("Fan off");
+  }
+    
   unsigned int dig1 = int(dat);
   unsigned int frac;
   if(val >= 0)
@@ -75,10 +95,38 @@ void getSensorValue()
   else
     frac = (int(dat)- dat ) * 100;
     
-  char result[20];
-  sprintf(result, "%d.%d", dig1, frac);
+  char temp[10];
+  sprintf(temp, "%d.%d", dig1, frac);
   Serial.print("Temp: ");
-  Serial.println(result);
-  acc.sendKV("Temperature", result);
+  Serial.println(temp);
+  
+  // light sensor
+  val = analogRead(lightSensorPin); 
+  
+  dat = (float)(1023-val)*10/val;
+  dig1 = int(dat);
+  if(val >= 0)
+    frac = (dat - int(dat)) * 100;
+  else
+    frac = (int(dat)- dat ) * 100;
+    
+  char light[10];
+  sprintf(light, "%d.%d", dig1, frac);
+  Serial.print("Light sensor resistance: ");
+  Serial.println(light);
+  
+  // moisture sensor
+  val = analogRead(moistureSensorPin);
+  
+  char moisture[10];
+  sprintf(moisture, "%d", val);
+  Serial.print("Moisture: ");
+  Serial.println(moisture);
+  
+  acc.sendKV("Temperature", temp);
+  acc.sendKV("Light", light);
+  acc.sendKV("Moisture", moisture);
+  
+  delay(500);
 }
 
