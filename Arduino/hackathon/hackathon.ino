@@ -76,19 +76,19 @@ void cmdCallBack(char *topic, uint8_t* payload, unsigned int len)
   if (acc.commandCompare("{\"f\":\"1\"}", payload, len)) {
     Serial.println(F("Received fan on"));
     digitalWrite(12, HIGH);
-    lightsOn = 1;
+    fanOn = 1;
   } else if (acc.commandCompare("{\"f\":\"0\"}", payload, len)) {
     Serial.println(F("Received fan off"));
     digitalWrite(12, LOW);
-    lightsOn = 0;
+    fanOn = 0;
   } else if (acc.commandCompare("{\"l\":\"1\"}", payload, len)) {
     Serial.println(F("Received light on"));
     digitalWrite(13, HIGH);
-    fanOn = 1;
+    lightsOn = 1;
   } else if (acc.commandCompare("{\"l\":\"0\"}", payload, len)) {
     Serial.println(F("Received light off"));
     digitalWrite(13, LOW);
-    fanOn = 0;
+    lightsOn = 0;
   } else {
     Serial.println((char*)payload);
   }
