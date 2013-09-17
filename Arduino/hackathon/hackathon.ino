@@ -49,7 +49,7 @@ void setup()
   }
 
   acc.setDomainStuffThing(M2MIO_DOMAIN,M2MIO_DEVICE_TYPE,M2MIO_DEVICE_ID);
-  //acc.registerForCommands();
+  acc.registerForCommands();
   //acc.subscribe("1ce215c3f9414890642cbc67595780a7/arduino/device02");
   
   pinMode(12, OUTPUT);
@@ -64,9 +64,17 @@ void loop()
   t.update();
 }
 
-void cmdCallBack(char *topic, uint8_t* payload, unsigned int len) {
-  Serial.println(F("In the cmdCallBack()"));
-  Serial.println((char*)payload);
+void cmdCallBack(char *topic, uint8_t* payload, unsigned int len)
+{
+  Serial.println(F("Command Received"));
+
+  if (acc.commandCompare("{\"light\":\"on\"}", payload, len)) {
+    digitalWrite(13, HIGH);
+  } else if (acc.commandCompare("{\"light\":\"off\"}", payload, len)) {
+    digitalWrite(13, LOW);
+  } else {
+    Serial.println(F("No match"));
+  }
 }
 
 void getSensorValue()
@@ -83,14 +91,14 @@ void getSensorValue()
   int fanOn = 0;
   if ((int)dat > 75)
   {
-    digitalWrite(13, HIGH);
+    digitalWrite(12, HIGH);
     delay(500);
     fanOn = 1;
     Serial.println("Fan on");
   }
   else
   {
-    digitalWrite(13, LOW);
+    digitalWrite(12, LOW);
     delay(500);
     fanOn = 0;
     Serial.println("Fan off");
@@ -121,14 +129,14 @@ void getSensorValue()
   int lightsOn = 0;
   if (lux0 < 50)
   {
-    digitalWrite(12, HIGH);
+    digitalWrite(13, HIGH);
     delay(500);
     lightsOn = 1;
     Serial.println("Lights on");
   }
   else
   {
-    digitalWrite(12, LOW);
+    digitalWrite(13, LOW);
     delay(500);
     lightsOn = 0;
     Serial.println("Lights off");
@@ -138,7 +146,7 @@ void getSensorValue()
   val = analogRead(moistureSensorPin);
   
   char moisture[10];
-  sprintf(moisture, "%d", val);
+  sprintf(moisture, "%d", val/10);
   Serial.print("Moisture: ");
   Serial.println(moisture);
   
