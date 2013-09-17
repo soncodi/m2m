@@ -31,12 +31,12 @@ setInterval(function() {
       return;
     }
 
-    fanStatus = (attrs.FanStatus === '1');
-    lightStatus = (attrs.LightStatus === '1');
+    fanStatus = (attrs.fs === '1');
+    lightStatus = (attrs.ls === '1');
 
-    var t = parseFloat(attrs.Temperature) || 0;
-    var m = parseFloat(attrs.Moisture) || 0;
-    var l = parseFloat(attrs.Light) || 0;
+    var t = parseFloat(attrs.t) || 0;
+    var m = parseFloat(attrs.m) || 0;
+    var l = parseFloat(attrs.l) || 0;
 
     if (temp.length > 9) {
       temp.shift();
