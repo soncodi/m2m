@@ -145,11 +145,11 @@ void getSensorValue()
   Serial.println(moisture);
   
   acc.startMessage();
-  acc.addKVToMessage("Temperature", temp);
-  acc.addKVToMessage("Light", lux0);
-  acc.addKVToMessage("Moisture", moisture);
-  acc.addKVToMessage("FanStatus", fanOn);
-  acc.addKVToMessage("LightStatus", lightsOn);
+  acc.addKVToMessage("t", temp);
+  acc.addKVToMessage("l", lux0);
+  acc.addKVToMessage("m", moisture);
+  acc.addKVToMessage("fs", fanOn);
+  acc.addKVToMessage("ls", lightsOn);
   acc.endMessage();
   
   boolean q = acc.sendMessage();
