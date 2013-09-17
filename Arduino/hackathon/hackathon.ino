@@ -31,8 +31,7 @@ void cmdCallBack(char *topic, uint8_t* payload, unsigned int len);
 
 void setup()
 {  
-  while(!Serial);
-  delay(1500);
+  while(!Serial1);
 
   Serial.begin(9600); // port to communicate to PC
   Serial1.begin(115200); // port that talks to 3G modem
@@ -59,7 +58,6 @@ void setup()
 
 void loop()
 {
-  delay(200);
   acc.loop();
   t.update();
 }
@@ -79,7 +77,7 @@ void cmdCallBack(char *topic, uint8_t* payload, unsigned int len)
 
 void getSensorValue()
 {  
-  Serial.println("getSensorValue");
+  Serial.println(F("getSensorValue"));
   // temp
   int B=3975;
   int val = analogRead(tempSensorPin);
@@ -92,16 +90,14 @@ void getSensorValue()
   if ((int)dat > 75)
   {
     digitalWrite(12, HIGH);
-    delay(500);
     fanOn = 1;
-    Serial.println("Fan on");
+    Serial.println(F("Fan on"));
   }
   else
   {
     digitalWrite(12, LOW);
-    delay(500);
     fanOn = 0;
-    Serial.println("Fan off");
+    Serial.println(F("Fan off"));
   }
     
   unsigned int dig1 = int(dat);
@@ -113,7 +109,7 @@ void getSensorValue()
     
   char temp[10];
   sprintf(temp, "%d.%d", dig1, frac);
-  Serial.print("Temp: ");
+  Serial.print(F("Temp: "));
   Serial.println(temp);
   
   // light sensor
@@ -122,24 +118,22 @@ void getSensorValue()
   dat=val*0.0048828125;                        // calculate the voltage
   int lux0=500/(Res0*((5-dat)/dat));           // calculate the Lux
   
-  Serial.print("Luminosity: ");
+  Serial.print(F("Luminosity: "));
   Serial.print(lux0);
-  Serial.println(" Lux");
+  Serial.println(F(" Lux"));
     
   int lightsOn = 0;
   if (lux0 < 50)
   {
     digitalWrite(13, HIGH);
-    delay(500);
     lightsOn = 1;
-    Serial.println("Lights on");
+    Serial.println(F("Lights on"));
   }
   else
   {
     digitalWrite(13, LOW);
-    delay(500);
     lightsOn = 0;
-    Serial.println("Lights off");
+    Serial.println(F("Lights off"));
   }
   
   // moisture sensor
@@ -147,7 +141,7 @@ void getSensorValue()
   
   char moisture[10];
   sprintf(moisture, "%d", val/10);
-  Serial.print("Moisture: ");
+  Serial.print(F("Moisture: "));
   Serial.println(moisture);
   
   acc.startMessage();
@@ -157,11 +151,9 @@ void getSensorValue()
   acc.addKVToMessage("FanStatus", fanOn);
   acc.addKVToMessage("LightStatus", lightsOn);
   acc.endMessage();
-  boolean q = acc.sendMessage();
   
+  boolean q = acc.sendMessage();
   Serial.println(q);
   
   Serial.println(acc.getMessage());
-  
-  delay(500);  
 }
