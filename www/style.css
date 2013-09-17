@@ -120,13 +120,46 @@ ul {
 }
 
 .plan {
+  padding: 20px;
 }
 
 .plan .pic {
-  display: inline-block;
+  text-align: center;
+}
+
+.plan .pic img {
+  width: 200px;
+}
+
+.plan .pic button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #f15a24;
+  border: 1px solid #999;
+  font-size: 20px;
+  color: #f2f2f2;
+  font-weight: bold;
 }
 
 .plan .desc {
-  display: inline-block;
+}
+
+.plan .desc .title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.plan .desc .sub {
+  margin: 10px 0;
+  font-size: 20px;
+  line-height: 28px;
+  color: #666;
+}
+
+.plan .desc .txt {
+  margin-left: 20px;
+  line-height: 24px;
+  font-size: 16px;
+  list-style: circle;
 }
 
