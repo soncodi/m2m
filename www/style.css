@@ -22,6 +22,10 @@ body {
   background-attachment: fixed;
 }
 
+ul {
+  list-style: none;
+}
+
 /* Widget */
 
 .navbar {
@@ -54,6 +58,10 @@ body {
 .logo {
   padding: 5px;
   height: 80px;
+}
+
+.toggle {
+  padding: 5px 10px;
 }
 
 /* Layout */
@@ -110,3 +118,15 @@ body {
 .graph-block .graph {
   height: 320px;
 }
+
+.plan {
+}
+
+.plan .pic {
+  display: inline-block;
+}
+
+.plan .desc {
+  display: inline-block;
+}
+

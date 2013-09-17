@@ -1,6 +1,9 @@
 /* globals Highcharts, io */
 
 $(function() {
+  // var root = '';
+  var root = 'http://eco-sense.us:8080';
+
   function arrSum(a, b) {
     return a + b;
   }
@@ -161,8 +164,7 @@ $(function() {
     }]
   });
 
-  // var socket = io.connect();
-  var socket = io.connect('http://eco-sense.us:8080');
+  var socket = io.connect(root);
 
   socket.emit('ping', {
     ping: new Date()
@@ -215,5 +217,17 @@ $(function() {
 
     $('.temp .status').toggleClass('dim', !data.fanStatus);
     $('.light .status').toggleClass('dim', !data.lightStatus);
+  });
+
+  $('.temp .toggle').on('click', function() {
+    var state = $(this).parent('.status').hasClass('dim') ? 1 : 0;
+
+    $.post(root + '/api/fan', { fanon: state });
+  });
+
+  $('.light .toggle').on('click', function() {
+    var state = $(this).parent('.status').hasClass('dim') ? 1 : 0;
+
+    $.post(root + '/api/light', { lighton: state });
   });
 });
