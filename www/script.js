@@ -42,7 +42,7 @@ $(function() {
     title: { text: null },
     xAxis: { type: 'datetime', tickPixelInterval: 150 },
     yAxis: {
-      title: { text: 'Value' },
+      title: { text: null },
       plotLines: [{ value: 0, width: 1, color: '#808080' }]
     },
     tooltip: {
@@ -89,7 +89,7 @@ $(function() {
     title: { text: null },
     xAxis: { type: 'datetime', tickPixelInterval: 150 },
     yAxis: {
-      title: { text: 'Value' },
+      title: { text: null },
       plotLines: [{ value: 0, width: 1, color: '#808080' }]
     },
     tooltip: {
@@ -136,7 +136,7 @@ $(function() {
     title: { text: null },
     xAxis: { type: 'datetime', tickPixelInterval: 150 },
     yAxis: {
-      title: { text: 'Value' },
+      title: { text: null },
       plotLines: [{ value: 0, width: 1, color: '#808080' }]
     },
     tooltip: {
