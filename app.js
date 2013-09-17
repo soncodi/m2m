@@ -39,9 +39,9 @@ setInterval(function() {
     var l = parseFloat(attrs.Light) || 0;
 
     if (temp.length > 9) {
-      temp.pop();
-      moisture.pop();
-      light.pop();
+      temp.shift();
+      moisture.shift();
+      light.shift();
     }
 
     temp.push(t);
